@@ -34,7 +34,7 @@ public class GraphicsAssignment5 extends Canvas {
 
 	// Init method, used to initalize variables
 	public void init() {
-		sizeScaler = 5;
+		sizeScaler = 5; // Set size multiplier to 5
 	}
 
 	// Program entry point
@@ -52,7 +52,7 @@ public class GraphicsAssignment5 extends Canvas {
 		for (int i = 0; i < 10; i++) {
 			// Randomly generate position of current shape within the dimensions of the Canvas
 			x = (int) (Math.random()*(this.getWidth() - (15 * sizeScaler)));
-			y = (int) (Math.random()*(this.getHeight()));
+			y = (int) (Math.random()*(this.getHeight() - (10 * sizeScaler)));
 
 			// Randomly generate colour 
 			red = (int) (Math.random()*256);
