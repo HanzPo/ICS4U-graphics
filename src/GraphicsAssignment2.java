@@ -90,6 +90,9 @@ public class GraphicsAssignment2 extends Canvas {
 				g.clearRect(0, 0, this.getWidth(), this.getHeight());
 			}
 		}
+
+		// Clears resources
+		g.dispose();
 		
 	} // End of paint method
 } // End of GraphicsAssignment2 class
