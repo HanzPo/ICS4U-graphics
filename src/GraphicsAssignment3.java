@@ -1,47 +1,62 @@
 /* Created by: Hanz Nathan Po
  * Date created: Sept 29, 2022
- * Last updated: Sept 29, 2022
- * Description: Simple program to test graphics in Java
+ * Last updated: June 12, 2023
+ * Description: Basic pie chart, created using the Graphics class
  */
 
+ // Package imports
 import java.awt.*;
 import javax.swing.JFrame;
 
+// Definition of third class, inherits from Canvas
 public class GraphicsAssignment3 extends Canvas {
 
+	// Variable definitions
+	int anchorPointX; // X coordinate that all shapes are set relative to
+	int anchorPointY; // Y coordinate that all shapes are set relative to
+	int pieX; // X coordinate that all pie shapes are set relative to
+	int pieY; // Y coordinate that all pie shapes are set relative to
+	int pieSize; // Stores size of the pie
+
+	Graphics2D g2; // Graphics2D instance, used to enable text antialiasing
+	RenderingHints rh; // RenderingHints, used to change rendering settings
+
+	// Constructor
 	public GraphicsAssignment3(String title) {
-		JFrame frame = new JFrame(title);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setSize(800, 800);
-		frame.setVisible(true);
-		frame.add(this);
+		JFrame frame = new JFrame(title); // Creates new JFrame instance
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Allows JFrame to be closed
+		frame.setSize(800, 800); // Sets dimensions of JFrame
+		frame.setVisible(true); // Allows JFrame to be visible
+		frame.add(this); // Adds this instance of Canvas to the JFrame
 	}
 	
+	// Init method, used to initalize variables
 	public void init() {
-		
+		// Variables used to easily change the position and size of the pie chart all at once
+		anchorPointX = 180;
+		anchorPointY = 50;
+		pieX = anchorPointX + 5;
+		pieY = anchorPointY + 80;
+		pieSize = 400;
 	}
 	
+	// Program entry point
 	public static void main(String[] args) {
+		// Creates new instance of GraphicsAssignment3, a child class of Canvas
 		GraphicsAssignment3 graphics3 = new GraphicsAssignment3("Market Share of Industry X");
+		// Calls method that initializes variables
 		graphics3.init();
 	}
 	
-
+	// Method that draws to the Canvas
 	public void paint (Graphics g) {
 		
 		// Enables anti-aliasing on text when possible
-		Graphics2D g2 = (Graphics2D)g;
-		RenderingHints rh = new RenderingHints(
+		g2 = (Graphics2D)g;
+		rh = new RenderingHints(
 	             RenderingHints.KEY_TEXT_ANTIALIASING,
 	             RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
 	    g2.setRenderingHints(rh);
-		
-		// Variables used to easily change the position of multiple shapes at once
-		int anchorPointX = 180;
-		int anchorPointY = 50;
-		int pieX = anchorPointX + 5;
-		int pieY = anchorPointY + 80;
-		int pieSize = 400;
 		
 		// TITLE
 		g.setFont(new Font("Times New Roman", Font.BOLD, 24));
@@ -69,7 +84,7 @@ public class GraphicsAssignment3 extends Canvas {
 		g.setColor(Color.yellow); // Sets colour to yellow
 		g.fillArc(pieX, pieY, pieSize, pieSize, 216, 144);
 		
-		
+		// Clears resources
 		g.dispose();
-	}
-}
+	} // End of paint method
+} // End of GraphicsAssignment3 class

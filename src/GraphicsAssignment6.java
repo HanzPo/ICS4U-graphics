@@ -1,12 +1,14 @@
 /* Created by: Hanz Nathan Po
  * Date created: Sept 29, 2022
- * Last updated: Sept 29, 2022
- * Description: Simple program to test graphics in Java
+ * Last updated: June 12, 2023
+ * Description: Funny face, created using the Graphics Class
  */
 
+// Imports
 import java.awt.*;
 import javax.swing.JFrame;
 
+// Start of GraphicsAssignment 6 class, 
 public class GraphicsAssignment6 extends Canvas {
 
 	public GraphicsAssignment6(String title) {

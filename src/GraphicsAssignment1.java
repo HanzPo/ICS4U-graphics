@@ -11,37 +11,45 @@ import javax.swing.JFrame;
 // Definition of first class, inherits from Canvas
 public class GraphicsAssignment1 extends Canvas {
 
-	int bookXPosition;
-	int bookYPosition;
+	// Definitions
+	int bookXPosition; // X position used as a reference point for all shapes used for the book cover. Makes moving the book cover easier if needed.
+	int bookYPosition; // Y position used as a reference point for all shapes used for the book cover. Makes moving the book cover easier if needed.
+	Graphics2D g2; // Graphics2D instance, used to enable text antialiasing
+	RenderingHints rh; // RenderingHints, used to change rendering settings
 
 	// Constructor
 	public GraphicsAssignment1(String title) {
-		JFrame frame = new JFrame(title);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setSize(600, 800);
-		frame.setVisible(true);
-		frame.add(this);
+		JFrame frame = new JFrame(title); // Creates new JFrame instance
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Allows JFrame to be closed
+		frame.setSize(600, 800); // Sets dimensions of JFrame
+		frame.setVisible(true); // Allows JFrame to be visible
+		frame.add(this); // Adds this instance of Canvas to the JFrame
 	}
 	
-	// Init method, required to initalize variables
+	// Init method, used to initalize variables
 	public void init() {
+		// Initializes book cover position
 		bookXPosition = 100;
 		bookYPosition = 80;
+
+		// Sets antialiasing settings
+		rh = new RenderingHints(
+	             RenderingHints.KEY_TEXT_ANTIALIASING,
+	             RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
 	}
 	
+	// Program entry point
 	public static void main(String[] args) {
-		// Creates new instance of GraphicsAssignment1, a child class of 
+		// Creates new instance of GraphicsAssignment1, a child class of Canvas
 		GraphicsAssignment1 graphics1 = new GraphicsAssignment1("Java Book Title Page");
+		// Calls method that initializes variables
 		graphics1.init();
 	}
 	
-
+	// Method that draws to the Canvas
 	public void paint (Graphics g) {
 		// Enables text antialiasing when available
-		Graphics2D g2 = (Graphics2D) g;
-		RenderingHints rh = new RenderingHints(
-	             RenderingHints.KEY_TEXT_ANTIALIASING,
-	             RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
+		g2 = (Graphics2D) g;
 	    g2.setRenderingHints(rh);
 		
 		// Book cover
@@ -78,5 +86,8 @@ public class GraphicsAssignment1 extends Canvas {
 		
 		// Arms
 		g.fillRect(bookXPosition + 110, bookYPosition + 295, 190, 20);
-	}
-}
+
+		// Clears resources
+		g.dispose();
+	} // End of paint method
+} // End of GraphicsAssignment1 class
